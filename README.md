@@ -1,6 +1,6 @@
 # PlayFab Economy v2 / Minecraft Bedrock Error Codes
 
-Last updated: March 05, 2026 (Europe/Berlin)
+Last updated: June 08, 2026 (Europe/Berlin)
 Audience: Minecraft Bedrock client devs, LiveOps, QA, support engineers
 
 > **Disclaimer**
@@ -8,6 +8,8 @@ Audience: Minecraft Bedrock client devs, LiveOps, QA, support engineers
 > - **Marketplace letter-number codes** (e.g., `B-0010`, `C-0010`, `SD-002-0`) have only partial public documentation.
 >   Most meanings below are derived from *observed in-game UI text*, Mojira bug reports, and player impact patterns.
 > - Treat letter-number codes as **operational signals** (what to tell the player + whether retries help), not as a stable backend API contract.
+> - **PlayFab backend / redemption errors** are official API-layer errors. They are useful for logs, support correlation,
+>   and entitlement debugging, but they are not the same thing as player-visible Bedrock dialog codes.
 
 ---
 
@@ -19,6 +21,8 @@ Audience: Minecraft Bedrock client devs, LiveOps, QA, support engineers
    - 2.2 Named error codes (Bedrock general)
 3. Marketplace Error Codes (Detailed)
 4. Named Error Codes (Detailed)
+5. PlayFab Backend and Redemption Errors
+6. Not Included Yet
 
 ---
 
