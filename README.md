@@ -52,9 +52,12 @@ Notes:
 | `C-0010`             | “We ran into an error. Please restart the game and try again.”                            | Session validation / account state / entitlement fetch failed      | Retry after restart + re-auth               |
 | `C-2010` / `C2010`   | Marketplace + skins won’t load (reported as `C2010` variants)                             | Same bucket as `C-0010`                                             | Same as `C-0010`                            |
 | `D-0010`             | “We had an issue connecting. Please go back and try again.” Often + Dressing Room breaks | Broad connectivity failure to online services / routing / outage   | Retry later; local steps sometimes help     |
+| `D-0020`             | Marketplace, multiplayer, skins, or Dressing Room fail together                           | Strong `D-*` connectivity variant; may replace/surface near `D-0010` | Treat like `D-0010`                         |
 | `E-0010` / `e-0010`  | Reported as “E-0010” in some tickets; often overlaps with `D-0010` screens               | Likely same connectivity family *(ambiguous in field reports)*     | Treat like `D-0010`                         |
+| `E-0020`             | Marketplace/account-state failure; sometimes co-reported with sign-in/session trouble     | Marketplace/account-state variant *(medium confidence)*             | Restart + re-auth; retry later              |
 | `F-0010`             | “We can’t detect an internet connection.” (commonly reported on Xbox/console)            | Console network detection / captive portal / network layer issue   | Retry after network reset + relaunch        |
 | `L-404` / `L-4xx`    | Marketplace page/deep link fails; often “trouble connecting… try again later”            | Marketplace content fetch failed: service issue OR item not usable | Retry later; may be server-side/content-gate|
+| `L-500`              | Marketplace fails early while loading                                                     | Likely `L-*` service/content-fetch failure *(medium-high confidence)* | Retry later; treat clusters as service-side |
 | `SD-002-0`           | “Hmm, Marketplace is having some issues, please try connecting later.”                    | Commerce/Marketplace backend degraded / maintenance                | Retry later; nothing local                  |
 | `U-000`              | “We’re having trouble connecting to the Marketplace right now. Please try again later!”  | Marketplace request failed / connectivity / transient backend      | Retry later; backoff helps                  |
 
@@ -190,6 +193,21 @@ Player guidance:
 3. Clear Marketplace cache; restart Minecraft.
 4. Advanced (PC): flush DNS; try different DNS; verify firewall rules for Minecraft.
 
+### D-0020
+Category: Connectivity / online services variant
+
+Typical player message / situation:
+- Marketplace, multiplayer, skins, or Dressing Room fail in the same session.
+- Field reports strongly overlap with `D-0010`, and at least some reports describe `D-0010` as now surfacing as `D-0020`.
+
+What it usually means:
+- Treat as a `D-*` connectivity family code unless stronger evidence differentiates it.
+- The failure may be local network/routing, account session instability, or a broader service incident.
+
+Player guidance:
+- Same checklist as `D-0010`.
+- If many users report it at the same time, treat as service-side first.
+
 ### E-0010 / e-0010
 Category: Ambiguous; likely `D-*` family
 
@@ -201,6 +219,22 @@ Working assumption:
 
 Player guidance:
 - Same checklist as `D-0010`.
+
+### E-0020
+Category: Marketplace / account-state variant *(medium confidence)*
+
+Typical player message / situation:
+- Marketplace or account-backed UI fails to load.
+- Often appears near sign-in, session, or Marketplace availability trouble.
+
+What it usually means:
+- Field reports point to a Marketplace/account-state failure, but the exact public meaning is not stable enough to treat as official.
+
+Player guidance:
+1. Fully quit Minecraft and relaunch.
+2. Sign out of the Microsoft account in Minecraft, restart, then sign back in.
+3. Clear Marketplace cache and retry.
+4. If reports cluster across users/platforms, treat as service-side.
 
 ### F-0010
 Category: “No internet detected” screen
@@ -235,6 +269,22 @@ Player guidance:
 2. Sign out/in to refresh account state.
 3. If it is tied to a specific pack/skin across many devices, treat as server-side/content-gating.
 4. If restrictions are suspected, verify “usable everywhere”/platform compatibility within Marketplace UI.
+
+### L-500
+Category: Marketplace load failure
+
+Typical player message / situation:
+- Marketplace fails early while loading.
+- Reports overlap with the broader `L-*` content-fetch / service-failure family.
+
+What it usually means:
+- A Marketplace service or content request failed before the UI could complete loading.
+- This is more likely to be backend/service-side when many users see it at once.
+
+Player guidance:
+1. Retry later; relaunch once.
+2. Sign out/in to refresh account state.
+3. If widespread, do not over-index on local fixes; treat as service-side.
 
 ### SD-002-0
 Category: Marketplace backend degraded / maintenance
