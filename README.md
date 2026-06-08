@@ -78,12 +78,21 @@ They appear across sign-in, Realms, and gameplay flows.
 | Bamboo    | Microsoft account sign-in                     | Sign-in issue                                    | Reset sign-in; restart device; retry              |
 | Bat       | Multiplayer / server disconnect               | Disconnected from server                         | Reconnect; check network                          |
 | Blaze     | Sign-in (often on Realms)                     | Sign-in/session issue                             | Sign out/in; ensure account is stable             |
+| Block     | Data transfer                                 | Problem sending or receiving Minecraft data       | Retry; check network and service status            |
+| Boat      | Realms / multiplayer join                     | Unspecified error                                 | Retry; check account/network state                 |
 | Breeze    | World join                                    | World is newer than the client                   | Update Minecraft                                  |
 | Cauldron  | Authentication server timeout                 | Auth servers not reachable / timed out           | Retry; check network; restart                     |
+| Chain     | Multiplayer version mismatch                  | Server/player is on a different Minecraft version | Update/downgrade to match the server/player        |
 | Chest     | Storage                                       | Not enough storage space                         | Free space; retry                                 |
-| Creeper   | World join / session                          | Network issue while connecting                   | Retry; general connection troubleshooting          |
+| Creeper   | Microsoft account sign-in                     | Authentication server / sign-in issue             | Reset sign-in; retry; check service status         |
+| Crossbow  | Sign-in                                       | Sign-in error                                    | Sign out/in; restart; retry                        |
+| Deep Ocean | Minecraft Launcher sign-in                   | Launcher sign-in issue                            | Restart Launcher; reset sign-in; retry             |
 | Drowned   | Microsoft account sign-in                     | Sign-in issue associated with Microsoft account  | Reset Microsoft sign-in; retry                     |
 | Emerald   | World connection                              | Generic connection failure                        | Retry; general troubleshooting                     |
+| Ghast     | Sign-in / credentials                         | Problem with credentials                          | Sign out/in; verify credentials                    |
+| Glowstone | Sign-in process                               | Error during sign-in process                      | Restart; reset sign-in; retry                      |
+| Pufferfish | General process flow                         | Official named error; public summary incomplete   | Retry; collect context if persistent               |
+| Terracotta | General                                      | Unspecified error                                 | Retry; collect context and check service status    |
 
 ---
 
@@ -339,6 +348,14 @@ These are official, named Bedrock error codes and are not Marketplace-specific.
 - **Meaning**: Sign-in/session issue.
 - **Guidance**: Sign out/in; ensure account is stable; retry.
 
+### Block
+- **Meaning**: Problem sending or receiving Minecraft data.
+- **Guidance**: Retry; check network stability and service status.
+
+### Boat
+- **Meaning**: Unspecified error; field reports often mention Realms or multiplayer join flows.
+- **Guidance**: Retry; validate account state, network stability, and Realms/service status.
+
 ### Breeze
 - **Meaning**: World version is newer than the client.
 - **Guidance**: Update Minecraft and retry.
@@ -347,13 +364,25 @@ These are official, named Bedrock error codes and are not Marketplace-specific.
 - **Meaning**: Authentication servers not reachable or timed out.
 - **Guidance**: Retry; check network connectivity; restart.
 
+### Chain
+- **Meaning**: Version mismatch between the server/player and the local Minecraft client.
+- **Guidance**: Update Minecraft, or match the server/Realm version before joining.
+
 ### Chest
 - **Meaning**: Not enough storage space to proceed.
 - **Guidance**: Free device storage and retry.
 
 ### Creeper
-- **Meaning**: Network issue while connecting to a world.
-- **Guidance**: Retry and follow general network troubleshooting.
+- **Meaning**: Problem signing in with a Microsoft account or reaching authentication servers.
+- **Guidance**: Sign out/in, restart Minecraft, retry later, and check for authentication-service incidents.
+
+### Crossbow
+- **Meaning**: Sign-in error.
+- **Guidance**: Sign out/in, restart the game/device, and retry.
+
+### Deep Ocean
+- **Meaning**: Minecraft Launcher sign-in issue.
+- **Guidance**: Restart the Launcher, reset sign-in, and retry.
 
 ### Drowned
 - **Meaning**: Microsoft account sign-in issue.
@@ -362,6 +391,23 @@ These are official, named Bedrock error codes and are not Marketplace-specific.
 ### Emerald
 - **Meaning**: Generic connection error to a world.
 - **Guidance**: Retry and use general connection troubleshooting.
+
+### Ghast
+- **Meaning**: Problem with sign-in credentials.
+- **Guidance**: Sign out/in, verify credentials, and retry.
+
+### Glowstone
+- **Meaning**: Error during the sign-in process.
+- **Guidance**: Restart Minecraft, reset sign-in, and retry.
+
+### Pufferfish
+- **Meaning**: Official named error; the public short summary is currently incomplete in search snippets.
+- **Guidance**: Retry, collect platform/build/sign-in context, and correlate with nearby service or account issues.
+
+### Terracotta
+- **Meaning**: Unspecified error.
+- **Guidance**: Retry, collect context, and check service status if it persists.
+
 ---
 
 ## 5. PlayFab Backend and Redemption Errors
