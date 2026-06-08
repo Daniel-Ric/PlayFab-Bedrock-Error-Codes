@@ -312,3 +312,33 @@ These are official, named Bedrock error codes and are not Marketplace-specific.
 ### Emerald
 - **Meaning**: Generic connection error to a world.
 - **Guidance**: Retry and use general connection troubleshooting.
+---
+
+## 5. PlayFab Backend and Redemption Errors
+
+These official PlayFab Economy v2 / redemption errors are mainly useful for developers, proxy logs,
+support correlation, and entitlement debugging. Keep them separate from the player-visible Bedrock
+Marketplace and named error codes above.
+
+PlayFab redemption APIs may also pass external store failures through `errorDetails` as `MarketplaceErrorCode`.
+When that happens, correlate the API-layer error with the player-visible Marketplace code and platform logs.
+
+| Code name | Numeric code | Typical layer | Meaning | Triage guidance |
+|----------|-------------:|---------------|---------|-----------------|
+| `AccountNotLinked` | `1014` | Account / entitlement | Platform/store account is not linked to the required entity or account context. | Check account linking, entitlement ownership, and platform account identity. |
+| `InvalidXboxLiveToken` | `1188` | Xbox / Microsoft Store redemption | Xbox token is invalid during redemption. | Refresh Xbox/Microsoft auth and retry with a valid token. |
+| `XboxXASSExchangeFailure` | `1306` | Xbox auth exchange | Xbox XASS token exchange failed. | Treat as Xbox auth/service integration failure; collect auth traces. |
+| `XboxInaccessible` | `1339` | Xbox service reachability | Xbox service could not be reached. | Check Xbox service status, network reachability, and retry later. |
+| `InvalidPSNAuthCode` | `1092` | PlayStation redemption | PlayStation auth code is invalid. | Refresh PSN auth and retry with a valid authorization code. |
+| `NotAuthorized` | `1089` | PlayStation redemption | Authorization failed in the PlayStation redemption flow. | Verify account permissions, token scope, and entitlement context. |
+| `InvalidCatalogItemConfiguration` | `4015` | Catalog / product config | Product or catalog configuration does not match the redemption flow. | Validate catalog item configuration, store mapping, and platform product setup. |
+
+---
+
+## Not Included Yet
+
+The following candidates are intentionally not part of the main catalog yet:
+- `L-400` and `L--2122640862`: field evidence is currently too thin or inconsistent.
+- Creator / Script API HTTP runtime errors such as `InternalHttpRequestError`, `MalformedHttpRequestError`,
+  `HttpRequestBodyTooLargeError`, `HttpRequestLimitExceededError`, `HttpRequestNotAllowedError`, and `HttpsOnlyError`:
+  these belong in a separate developer appendix if the project scope expands beyond player-visible Bedrock and Marketplace errors.
